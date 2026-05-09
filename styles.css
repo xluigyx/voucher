@@ -1,0 +1,178 @@
+:root {
+    --bg: #080c14; --bg2: #0f1520; --bg3: #161d2e;
+    --t1: #f0f2f8; --t2: #8892b0; --t3: #4a5578;
+    --gold: #d4a017; --gold-l: #f5d060; --gold-d: #8b6914;
+    --silver: #a8b4c8; --silver-l: #d0daf0; --silver-d: #6b7a94;
+    --bronze: #b87333; --bronze-l: #d4955a; --bronze-d: #7a4c22;
+    --accent: #6366f1; --emerald: #10b981;
+    --sans: 'Inter', sans-serif; --mono: 'Share Tech Mono', monospace; --display: 'Orbitron', sans-serif;
+    --vw: 400px; --vh: 600px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100vh}
+
+/* ── Control Panel ── */
+.control-panel{background:rgba(15,21,32,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);padding:12px 24px;position:sticky;top:0;z-index:100}
+.cp-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.cp-brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#a855f7);display:grid;place-items:center;color:#fff}
+.brand-t{font-family:var(--display);font-size:.95rem;font-weight:700;letter-spacing:.04em}
+.brand-s{font-size:.72rem;color:var(--t2)}
+.cp-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-family:var(--sans);font-size:.8rem;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-upload{background:var(--bg3);color:var(--t1);border:1px solid rgba(255,255,255,.08)}
+.btn-upload:hover{border-color:var(--accent)}
+.btn-demo{background:transparent;color:var(--t2);border:1px dashed rgba(255,255,255,.1)}
+.btn-demo:hover{color:var(--accent);border-color:var(--accent)}
+.btn-gen{background:linear-gradient(135deg,var(--accent),#a855f7);color:#fff}
+.btn-gen:disabled{opacity:.35;cursor:not-allowed}
+.btn-gen:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 0 24px rgba(99,102,241,.3)}
+.badge{display:flex;align-items:center;gap:6px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);padding:6px 14px;border-radius:8px;font-size:.78rem;color:var(--emerald)}
+.badge span{font-family:var(--mono);font-weight:700;font-size:1rem}
+.progress-wrap{max-width:1400px;margin:10px auto 0;background:var(--bg3);border-radius:6px;height:22px;position:relative;overflow:hidden}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#a855f7);border-radius:6px;transition:width .15s}
+.progress-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;color:#fff}
+
+/* ── Empty State ── */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;gap:14px;text-align:center}
+.empty-icon{font-size:4rem;opacity:.3}
+.empty h2{font-size:1.2rem}
+.empty p{color:var(--t2);font-size:.85rem}
+.empty code{font-family:var(--mono);background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent);font-size:.8rem}
+
+/* ── Preview Grid ── */
+.preview-grid{max-width:1440px;margin:0 auto;padding:28px 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:24px}
+.pair{display:flex;flex-direction:column;gap:8px;animation:fadeUp .4s ease both}
+.pair-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);padding-left:4px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════════════════════════════════════════
+   VOUCHER CARD BASE (IMAGE TEMPLATES)
+   ═══════════════════════════════════════════════════════════ */
+:root {
+    --vw: 640px;
+    --vh: 400px;
+}
+
+.voucher {
+    position:relative; width:var(--vw); height:var(--vh);
+    border-radius:16px; overflow:hidden;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family:var(--sans);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-color: #fcfcfc;
+}
+
+/* Category Colors for dynamic text */
+.voucher--oro { color: #5a4511; }
+.voucher--plata { color: #3b2e2a; }
+.voucher--bronce { color: #4a3018; }
+
+.v-title-top {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.v-serial-left {
+    position: absolute;
+    bottom: 25px;
+    left: 40px;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.v-id-front {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.v-value-right {
+    position: absolute;
+    bottom: 25px;
+    right: 40px;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+/* ── Front Card Layout ── */
+.front-card .qr-container-front {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+}
+
+.qr-ring img, .qr-ring canvas {
+    width: 160px !important;
+    height: 160px !important;
+    object-fit: contain;
+}
+
+/* ── Back Card Layout ── */
+.qr-container-back-corner {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr-ring-small img, .qr-ring-small canvas {
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: contain;
+}
+
+.v-ref-back {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.back-card .materias-container {
+    position: absolute;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.materias-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.v-materias {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.v-materias li {
+    padding: 0;
+    margin: 0;
+    color: inherit;
+}
+
+/* ── Scale for preview ── */
+.preview-card{transform:scale(.7);transform-origin:top left;margin-bottom:-110px}
+
+@media(max-width:900px){.preview-grid{grid-template-columns:1fr;justify-items:center}.cp-inner{flex-direction:column;align-items:flex-start}}

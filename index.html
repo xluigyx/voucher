@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Vouchers Académicos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+    <header class="control-panel" id="control-panel">
+        <div class="cp-inner">
+            <div class="cp-brand">
+                <div class="brand-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+                <div><h1 class="brand-t">Voucher Generator</h1><p class="brand-s">Sistema de generación masiva</p></div>
+            </div>
+            <div class="cp-actions">
+                <label class="btn btn-upload" for="csv-input">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    Cargar CSV
+                    <input type="file" id="csv-input" accept=".csv" hidden>
+                </label>
+                <button class="btn btn-demo" id="btn-demo">▶ Demo</button>
+                <button class="btn btn-gen" id="btn-generate" disabled>⚡ Generar 150 PNG</button>
+                <div class="badge" id="badge" hidden><span id="badge-n">0</span> vouchers</div>
+            </div>
+        </div>
+        <div class="progress-wrap" id="progress-wrap" hidden>
+            <div class="progress-bar" id="progress-bar"></div>
+            <span class="progress-text" id="progress-text">0%</span>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="empty" id="empty-state">
+            <div class="empty-icon">📄</div>
+            <h2>Cargue un CSV para comenzar</h2>
+            <p>Columnas requeridas: <code>Codigo</code>, <code>Categoria</code>, <code>Valor</code></p>
+        </section>
+
+        <section class="preview-grid" id="preview-grid" hidden></section>
+    </main>
+
+    <!-- Hidden render area for PNG export -->
+    <div id="render-area" style="position:fixed;left:-9999px;top:0;"></div>
+
+    <script src="app.js?v=2"></script>
+</body>
+</html>
